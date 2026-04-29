@@ -33,9 +33,14 @@ def main():
     parser = argparse.ArgumentParser(description="Explore Park4night spots near a location.")
     parser.add_argument("lat", type=float, help="Latitude of the center point")
     parser.add_argument("lon", type=float, help="Longitude of the center point")
+    # Generate type list for help message
+    type_help = "Filter by location type code. Available types: " + ", ".join(
+        [f"{k} ({v[0]})" for k, v in PLACE_INFO.items()]
+    )
+    
     parser.add_argument("--limit", type=int, default=5, help="Number of spots to display (default: 5)")
     parser.add_argument("--sort", choices=["rating", "reviews", "reviews-rating", "rating-reviews"], help="Sort results by rating or number of reviews")
-    parser.add_argument("--type", help="Filter by location type code (e.g., C for Campsite, OR for Nature Spot)")
+    parser.add_argument("--type", help=type_help)
     parser.add_argument("--comments", type=int, default=0, help="Number of latest comments to show for each spot")
     
     args = parser.parse_args()
