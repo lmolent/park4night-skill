@@ -8,6 +8,8 @@ PLACE_INFO = {
     "C": ("Campsite", "⛺"),
     "AC": ("Motorhome Area", "🚐"),
     "OR": ("Nature Spot (Wild)", "🌲"),
+    "PN": ("Nature Spot", "🌲"),
+    "AR": ("Rest Area", "☕"),
     "DS": ("Service Point", "💧"),
     "PH": ("Private Host", "🏠"),
     "F": ("Farm", "🚜"),
