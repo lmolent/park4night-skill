@@ -1,9 +1,9 @@
 ---
-name: park4night-explorer
+name: park4nigh-skill
 description: Search for campsites, motorhome areas, and nature spots using the Park4night API. Use this skill when the user wants to find travel spots near GPS coordinates, check ratings, or read recent reviews.
 ---
 
-# Park4night Explorer
+# Park4night Skill (park4nigh-skill)
 
 This skill provides a programmatic interface to explore locations from the Park4night service. All necessary Python logic is bundled within the skill.
 
