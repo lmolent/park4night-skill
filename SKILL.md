@@ -15,6 +15,10 @@ When the user asks for generic spots without specifying a type, follow this prio
 
 If a user asks for "the best spots", try running a search and filtering for `PN` or `OR` first.
 
+## Response Formatting & Translation
+- **Automatic Translation**: If any retrieved information (Spot Name, Description, or User Comments) is in a language different from the user's current language, you **MUST** translate it into the user's language before presenting the results.
+- **Tone**: Keep the descriptions helpful and emphasize the characteristics relevant to wild camping (quietness, accessibility, nature surroundings).
+
 ## Core Workflows
 
 ### 1. Search for Spots near Coordinates
