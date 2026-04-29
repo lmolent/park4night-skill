@@ -1,9 +1,9 @@
 ---
-name: park4night-skill
+name: park4nigh-skill
 description: Search for campsites, motorhome areas, and nature spots using the Park4night API. Use this skill when the user wants to find travel spots near GPS coordinates, check ratings, or read recent reviews.
 ---
 
-# Park4night Skill (park4night-skill)
+# Park4night Skill (park4nigh-skill)
 
 This skill provides a programmatic interface to explore locations from the Park4night service. All necessary Python logic is bundled within the skill.
 
@@ -17,14 +17,12 @@ When asked to find places near a specific location or GPS coordinates:
 
 **Command Pattern:**
 ```bash
-python3 <skill_path>/scripts/main.py <lat> <lon> [--limit <n>] [--sort <type>] [--comments <n>]
+python3 <skill_path>/scripts/main.py <lat> <lon> [--limit <n>] [--sort <type>] [--type <code >] [--comments <n>]
 ```
 
-### 2. Sorting Options (`--sort`)
-- `rating`: Best rated first.
-- `reviews`: Most visited first.
-- `rating-reviews`: Best rated, then most reviews.
-- `reviews-rating`: Most reviews, then best rated.
+### 2. Filtering and Sorting
+- `--type <code>`: Filter by type (e.g., `C` for Campsite, `OR` for Nature Spot).
+- `--sort <type>`: Options are `rating`, `reviews`, `rating-reviews`, `reviews-rating`.
 
 ### 3. Detailed Reviews
 - Use `--comments <n>` to fetch the latest `n` reviews for each listed spot.

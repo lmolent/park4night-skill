@@ -35,6 +35,7 @@ def main():
     parser.add_argument("lon", type=float, help="Longitude of the center point")
     parser.add_argument("--limit", type=int, default=5, help="Number of spots to display (default: 5)")
     parser.add_argument("--sort", choices=["rating", "reviews", "reviews-rating", "rating-reviews"], help="Sort results by rating or number of reviews")
+    parser.add_argument("--type", help="Filter by location type code (e.g., C for Campsite, OR for Nature Spot)")
     parser.add_argument("--comments", type=int, default=0, help="Number of latest comments to show for each spot")
     
     args = parser.parse_args()
@@ -47,6 +48,12 @@ def main():
     try:
         places = client.get_places_by_coords(args.lat, args.lon)
         
+        # Filtering logic
+        if args.type:
+            requested_type = args.type.upper()
+            places = [p for p in places if p.code == requested_type]
+            print(f"Filtered for type: {requested_type}")
+
         # Sorting logic
         if args.sort == "rating":
             places.sort(key=lambda x: float(x.note_moyenne) if x.note_moyenne else 0.0, reverse=True)
