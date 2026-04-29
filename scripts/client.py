@@ -5,13 +5,20 @@ from models import Place, Review
 class Park4nightClient:
     BASE_URL = "https://guest.park4night.com/services/V4.1"
 
+    def __init__(self):
+        self.session = requests.Session()
+        self.session.headers.update({
+            "User-Agent": "park4night/4.1.0 (iPhone; iOS 16.0; Scale/3.00)",
+            "Cookie": "PHPSESSID=tvin3l4muefqogfu6ir30sj4a9"
+        })
+
     def get_places_by_coords(self, latitude: float, longitude: float) -> List[Place]:
         """
         Fetches places from GPS coordinates.
         """
         endpoint = f"{self.BASE_URL}/lieuxGetFilter.php"
         params = {"latitude": latitude, "longitude": longitude}
-        response = requests.get(endpoint, params=params)
+        response = self.session.get(endpoint, params=params)
         response.raise_for_status()
         data = response.json()
         
@@ -29,7 +36,7 @@ class Park4nightClient:
         """
         endpoint = f"{self.BASE_URL}/commGet.php"
         params = {"lieu_id": place_id}
-        response = requests.get(endpoint, params=params)
+        response = self.session.get(endpoint, params=params)
         response.raise_for_status()
         data = response.json()
         
@@ -52,7 +59,7 @@ class Park4nightClient:
         """
         endpoint = f"{self.BASE_URL}/lieuGetUser.php"
         params = {"uuid": username}
-        response = requests.get(endpoint, params=params)
+        response = self.session.get(endpoint, params=params)
         response.raise_for_status()
         data = response.json()
         if isinstance(data, dict) and "lieux" in data:
@@ -65,7 +72,7 @@ class Park4nightClient:
         """
         endpoint = f"{self.BASE_URL}/lieuGetCommUser.php"
         params = {"user_id": user_id}
-        response = requests.get(endpoint, params=params)
+        response = self.session.get(endpoint, params=params)
         response.raise_for_status()
         data = response.json()
         if isinstance(data, dict) and "lieux" in data:
