@@ -7,6 +7,14 @@ description: Search for campsites, motorhome areas, and nature spots using the P
 
 This skill provides a programmatic interface to explore locations from the Park4night service. All necessary Python logic is bundled within the skill.
 
+## Search Strategy & Prioritization
+When the user asks for generic spots without specifying a type, follow this priority order for searching and presenting results:
+1. **Primary Preference: Nature & Wild Spots** (Codes: `PN`, `OR`) - Always look for these first.
+2. **Secondary Preference: Parkings** (Codes: `P`, `PJ`) - Use if no nature spots are available.
+3. **Last Resort: Campsites** (Code: `C`) - Only suggest if specifically requested or if other types are unavailable.
+
+If a user asks for "the best spots", try running a search and filtering for `PN` or `OR` first.
+
 ## Core Workflows
 
 ### 1. Search for Spots near Coordinates
